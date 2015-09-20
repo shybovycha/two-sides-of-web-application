@@ -1,0 +1,50 @@
+extends layouts/default.jade
+
+block content
+    .row
+        .col-xs-12.col-md-6.col-md-offset-6
+            form.form-inline
+                .form-group
+                    input.form-control(type="text" placeholder="From date")
+                .form-group
+                    input.form-control(type="text" placeholder="To date")
+                .form-group
+                    .btn.btn-primary Update
+
+    .row
+        .col-xs-12
+            .well
+                | You can track your application visitors with this URL:
+                br
+                | http://localhost:3000/track/APP1TOKN
+
+    .row.m-t-md
+        .col-xs-12
+            h3 Visitors
+            .well
+                | Chart goes here
+
+        .col-xs-12.col-md-6
+            h3 Visitors by country
+
+            table.table.table-bordered
+                thead
+                    tr
+                        th Country
+                        th Visitors
+                tbody
+                    tr
+                        td USA
+                        td 100
+                    tr
+                        td Germany
+                        td 50
+                    tr
+                        td North Korea
+                        td 42
+                    tr
+                        td Greenland
+                        td 39
+                    tr
+                        td Spain
+                        td 2

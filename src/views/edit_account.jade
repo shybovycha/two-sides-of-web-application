@@ -1,0 +1,15 @@
+extends layouts/default.jade
+
+block content
+    .row.m-t-md
+        .col-xs-12.col-md-4
+            h3 Account settings
+            form
+                fieldset.form-group
+                    input.form-control(type="text" placeholder="Your name")
+                fieldset.form-group
+                    input.form-control(type="password" placeholder="Password")
+                fieldset.form-group
+                    input.form-control(type="password" placeholder="Password confirmation")
+                fieldset.form-group.text-center
+                    button.btn.btn-success(type="submit") Save

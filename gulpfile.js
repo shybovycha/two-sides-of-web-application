@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
     sass = require('gulp-scss'),
     babel = require('gulp-babel'),
-    jade = require('gulp-jade');
+    jade = require('gulp-jade'),
+    server = require('gulp-server-livereload');
 
 gulp.task('build', function () {
     gulp.src('src/views/**/*.jade')
@@ -15,4 +16,16 @@ gulp.task('build', function () {
     gulp.src('src/stylesheets/**/*.scss')
         .pipe(sass({ style: 'expanded' }))
         .pipe(gulp.dest('public/stylesheets'));
+});
+
+gulp.task('serve', function () {
+    gulp.watch('src/**/*', [ 'build' ])
+
+    gulp.src(['public/', 'bower_components/'])
+        .pipe(server({
+            port: 3000,
+            livereload: true,
+            directoryListing: false,
+            open: true
+        }));
 });

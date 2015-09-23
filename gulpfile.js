@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     sass = require('gulp-scss'),
     babel = require('gulp-babel'),
     jade = require('gulp-jade'),
+    concat = require('gulp-concat'),
     server = require('gulp-server-livereload');
 
 gulp.task('build', function () {
@@ -11,10 +12,12 @@ gulp.task('build', function () {
 
     gulp.src('src/javascripts/**/*.js')
         .pipe(babel())
+        .pipe(concat('all.js'))
         .pipe(gulp.dest('public/javascripts'));
 
     gulp.src('src/stylesheets/**/*.scss')
         .pipe(sass({ style: 'expanded' }))
+        .pipe(concat('all.css'))
         .pipe(gulp.dest('public/stylesheets'));
 });
 

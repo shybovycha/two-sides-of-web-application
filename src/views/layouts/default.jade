@@ -1,13 +1,16 @@
 doctype html
-html(lang="en")
+html(lang="en" ng-app="ourStatsApp")
     head
         block head
             title OurStats
             link(rel="stylesheet" href="bootstrap/dist/css/bootstrap.css")
             link(rel="stylesheet" href="bootstrap/dist/css/bootstrap-theme.css")
+            link(rel="stylesheet" href="stylesheets/all.css")
             script(src="bootstrap/dist/js/bootstrap.js")
+            script(src="angular/angular.js")
+            script(src="angular-route/angular-route.js")
+            script(src="javascripts/all.js")
 
     body
         block body
-            .container-fluid
-                block content
+            .container-fluid(ng-view)

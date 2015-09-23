@@ -22,6 +22,8 @@ gulp.task('build', function () {
 });
 
 gulp.task('serve', function () {
+    gulp.run('build');
+
     gulp.watch('src/**/*', [ 'build' ])
 
     gulp.src(['public/', 'bower_components/'])

@@ -1,11 +1,11 @@
 .row.m-t-md
     .col-xs-12.col-md-4
         h3 Account settings
-        form
+        form(ng-submit="update()")
             fieldset.form-group
-                input.form-control(type="text" placeholder="Your name")
+                input.form-control(type="text" placeholder="Your name" ng-model="account.name")
             fieldset.form-group
-                input.form-control(type="password" placeholder="Password")
+                input.form-control(type="password" placeholder="Password" ng-model="account.password")
             fieldset.form-group
                 input.form-control(type="password" placeholder="Password confirmation")
             fieldset.form-group.text-center

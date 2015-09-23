@@ -2,16 +2,8 @@
     .col-xs-12.col-md-4
         h3 Your applications
         ul
-            li
-                a(href="/application_details.html") Test application #1
-            li
-                a(href="/application_details.html") Test application #2
-            li
-                a(href="/application_details.html") Test application #3
-            li
-                a(href="/application_details.html") Test application #4
-            li
-                a(href="/application_details.html") Test application #5
+            li(ng-repeat="app in apps")
+                a(href="#/apps/{{ app.id }}") {{ app.name }}
 
     .col-md-offset-2
 

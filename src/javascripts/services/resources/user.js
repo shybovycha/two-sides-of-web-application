@@ -1,4 +1,4 @@
-ourStatsApp.factory('session', [ '$http', 'accountData',
+ourStatsApp.factory('user', [ '$http', 'accountData',
     ($http, accountData) => {
         var testAccount = {
                     name: "Artem",
@@ -6,7 +6,7 @@ ourStatsApp.factory('session', [ '$http', 'accountData',
                 };
 
         return {
-            get: (account) => {
+            find: (account) => {
                 var params = {
                     email: account.email,
                     password: account.password
@@ -22,7 +22,15 @@ ourStatsApp.factory('session', [ '$http', 'accountData',
                     password: account.password
                 };
 
-                accountData.set(testAccount);
+                accountData.set(params);
+            },
+
+            update: (account) => {
+                var params = accountData.get();
+
+                params.name = account.name;
+
+                accountData.set(params);
             }
         }
     }

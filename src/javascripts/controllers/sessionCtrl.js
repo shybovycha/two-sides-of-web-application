@@ -1,18 +1,21 @@
-ourStatsControllers.controller('sessionCtrl', [ '$scope', 'session', 'accountData',
-    ($scope, session) => {
+ourStatsControllers.controller('sessionCtrl', [ '$scope', '$location', 'user', 'session',
+    ($scope, $location, user, session) => {
         $scope.newAccount = {};
         $scope.existingAccount = {};
 
         $scope.signIn = () => {
-            session.get($scope.existingAccount);
+            user.find($scope.existingAccount);
+            $location.path('/');
         };
 
         $scope.signUp = () => {
-            session.create($scope.newAccount);
+            user.create($scope.newAccount);
+            $location.path('/new-app');
         };
 
         $scope.signOut = () => {
-            accountData.reset();
+            session.reset();
+            $location.path('/');
         };
     }
 ]);

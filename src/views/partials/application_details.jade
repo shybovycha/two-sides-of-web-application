@@ -11,9 +11,12 @@
 .row
     .col-xs-12
         .well
-            | You can track your application visitors with this URL:
-            br
-            | http://localhost:3000/track/APP1TOKN
+            a.btn.btn-primary(href="#/apps/{{ app.id }}/edit") Edit
+            h1 {{ app.name }}
+            em
+                | You can track your application visitors with this URL:
+                br
+                | http://localhost:3000/track/{{ app.token }}
 
 .row.m-t-md
     .col-xs-12
@@ -30,18 +33,6 @@
                     th Country
                     th Visitors
             tbody
-                tr
-                    td USA
-                    td 100
-                tr
-                    td Germany
-                    td 50
-                tr
-                    td North Korea
-                    td 42
-                tr
-                    td Greenland
-                    td 39
-                tr
-                    td Spain
-                    td 2
+                tr(ng-repeat="stat in app.stats.byCountry")
+                    td {{ stat.country }}
+                    td {{ stat.amount }}

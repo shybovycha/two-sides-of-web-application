@@ -17,11 +17,15 @@ ourStatsApp.config([ '$routeProvider',
                 templateUrl: 'partials/application_list.html',
                 controller: 'appListCtrl'
             }).
-            when('/app/:id', {
+            when('/apps/new', {
+                templateUrl: 'partials/new_application.html',
+                controller: 'newAppCtrl'
+            }).
+            when('/apps/:id', {
                 templateUrl: 'partials/application_details.html',
                 controller: 'appDetailsCtrl'
             }).
-            when('/app/:id/edit', {
+            when('/apps/:id/edit', {
                 templateUrl: 'partials/edit_application.html',
                 controller: 'appEditCtrl'
             }).

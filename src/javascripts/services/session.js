@@ -1,4 +1,4 @@
-ourStatsApp.factory('accountData', [ '$cookies',
+ourStatsApp.factory('session', [ '$cookies',
     ($cookies) => {
         return {
             get: () => {

@@ -1,3 +1,9 @@
 extends layouts/default.jade
 
-h1 Currently we are having {{ apps }} applications tracking!
+block content
+    nav.navbar.navbar-default
+        .container-fluid
+            .navbar-header
+                a.navbar-brand(href="#/") OurStats
+
+    .container(ng-view)

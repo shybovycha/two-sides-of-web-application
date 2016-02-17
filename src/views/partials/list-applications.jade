@@ -1,0 +1,9 @@
+.row.m-t-md
+    .col-xs-12.col-md-4
+        h3 Your applications
+
+        a.btn.btn-xs.btn-success(href="#/applications/new") Create application
+
+        ul
+            li(ng-repeat="application in applications")
+                a(href="#/applications/{{ application.id }}") {{ application.name }}

@@ -1,36 +1,34 @@
-ourStatsApp.factory('user', [ '$http', 'accountData',
-    ($http, accountData) => {
-        var testAccount = {
-                    name: "Artem",
-                    email: "artem@ourstats.com"
-                };
-
+ourStatsApp.factory('User', ['$http', 'AccountData', 'MockData',
+    ($http, AccountData, MockData) => {
         return {
-            find: (account) => {
-                var params = {
-                    email: account.email,
-                    password: account.password
-                };
-
-                accountData.set(testAccount);
+            get: () => {
+                return AccountData.get();
             },
 
             create: (account) => {
+                var params = {
+                    email: account.email,
+                    name: account.name,
+                    password: account.password
+                };
+
+                // creating new user account
+                // send data to the server and check if response status == 200
+                AccountData.set(MockData.account);
+            },
+
+            update: (account) => {
                 var params = {
                     name: account.name,
                     email: account.email,
                     password: account.password
                 };
 
-                accountData.set(params);
-            },
+                var existingAccount = AccountData.get();
 
-            update: (account) => {
-                var params = accountData.get();
-
-                params.name = account.name;
-
-                accountData.set(params);
+                // updating user account
+                // send data to the server and check if response status == 200
+                AccountData.set(MockData.account);
             }
         }
     }

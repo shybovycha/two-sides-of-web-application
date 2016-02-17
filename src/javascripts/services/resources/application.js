@@ -1,104 +1,24 @@
-ourStatsApp.factory('application', [ '$http',
-    ($http) => {
-        var testApps = [
-                {
-                    id: "1",
-                    name: "Test App #1",
-                    token: "APP1TKN",
-                    stats: {
-                        byCountry: [
-                            {
-                                country: 'USA',
-                                amount: 190
-                            }
-                        ]
-                    }
-                },
-                {
-                    id: "2",
-                    name: "Test App #2",
-                    token: "APP1TOK",
-                    stats: {
-                        byCountry: [
-                            {
-                                country: 'North Korea',
-                                amount: 85
-                            }
-                        ]
-                    }
-                },
-                {
-                    id: "3",
-                    name: "Test App #3",
-                    token: "APP3TKN",
-                    stats: {
-                        byCountry: [
-                            {
-                                country: 'Chile',
-                                amount: 98
-                            }
-                        ]
-                    }
-                },
-                {
-                    id: "4",
-                    name: "Test App #4",
-                    token: "APP4TOK",
-                    stats: {
-                        byCountry: [
-                            {
-                                country: 'Germany',
-                                amount: 42
-                            }
-                        ]
-                    }
-                },
-                {
-                    id: "5",
-                    name: "Test App #5",
-                    token: "APP5TKN",
-                    stats: {
-                        byCountry: [
-                            {
-                                country: 'Pakistan',
-                                amount: 17
-                            }
-                        ]
-                    }
-                }
-            ];
+ourStatsApp.factory('Application', ['$http', 'MockData', ($http, MockData) => {
+    return {
+        create: (application) => {
+            // send data to the server and check if response status == 200; return application (arg)
+            return application;
+        },
 
-        return {
-            all: () => {
-                return testApps;
-            },
+        get: (id, fromDate, toDate) => {
+            // fromDate and toDate are used for stats filtering
+            // send data to the server and return response
+            return MockData.applications[id];
+        },
 
-            get: (appId) => {
-                var found = testApps.filter((a) => {
-                    return a.id === appId;
-                });
+        update: (id, application) => {
+            // send data to the server and check if response status == 200; return application (arg)
+            return application;
+        },
 
-                return (found.length > 0) ? found[0] : null;
-            },
-
-            update: (application) => {
-                testApps = testApps.map((a) => {
-                    if (a.id === application.id)
-                        return application;
-                    else
-                        return a;
-                });
-            },
-
-            create: (application) => {
-                var id = parseInt(testApps[testApps.length - 1].id) + 1;
-
-                application.id = id.toString();
-                application.token = (id % 2 === 0) ? "APP" + id + "TOK" : "TKN" + id + "APP";
-                application.stats = { byCountry: [] };
-
-                testApps.push(application);
-            }
+        all: () => {
+            // send request to the server and return the response
+            return MockData.applications;
         }
-    }
-]);
+    };
+}]);

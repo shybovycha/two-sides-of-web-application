@@ -1,12 +1,12 @@
 .row.m-t-md
     .col-xs-12.col-md-4
         h3 Account settings
-        form(ng-submit="update()")
+        form(ng-submit="save()")
             fieldset.form-group
                 input.form-control(type="text" placeholder="Your name" ng-model="account.name")
             fieldset.form-group
                 input.form-control(type="password" placeholder="Password" ng-model="account.password")
             fieldset.form-group
-                input.form-control(type="password" placeholder="Password confirmation")
+                input.form-control(type="password" placeholder="Password confirmation" ng-model="account.passwordConfirmation")
             fieldset.form-group.text-center
                 button.btn.btn-success(type="submit") Save
